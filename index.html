@@ -1,84 +1,106 @@
-<style> 
-
-html {
+<style>
+  
+  html,
+body {
+  background: #0b1c22;
   height: 100%;
 }
 
-body {
-  background-color: #ffffff;
-  height: 100%;
+.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20%;
+}
+
+.orbit {
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: absolute;
+  border-radius: 100%;
+  margin: -50px -250px;
+  -webkit-animation: orbit 12.81216s linear infinite;
+          animation: orbit 12.81216s linear infinite;
+}
+
+.planet {
+  background: #C25447;
+  box-shadow: inset -30px -30px 0px #bf4d3f;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+.planet:before {
+  content: '';
+  background: #b4483c;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: 50px 100px;
+}
+.planet:after {
+  content: '';
+  background: #b84a3d;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: -20px 40px;
 }
 
 .moon {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  background-color: #95a5a6;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  background: #9E9E9E;
+  box-shadow: inset -7px -7px 0 #8c8c8c;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin: 20px;
+}
+.moon:before {
+  content: '';
+  background: #949494;
+  border-radius: 100%;
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  margin: 10px 10px;
+}
+.moon:after {
+  content: '';
+  background: #949494;
+  border-radius: 100%;
+  width: 9px;
+  height: 9px;
+  display: block;
+  margin: -7px 20px;
 }
 
 @-webkit-keyframes orbit {
-  from {
-    -webkit-transform: rotateX(0) rotateY(359deg);
-  }
   to {
-    -webkit-transform: rotateX(359deg) rotateY(-359deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
+
 @keyframes orbit {
-  from {
-    -webkit-transform: rotateX(0) rotateY(359deg);
-    transform: rotateX(0) rotateY(359deg);
-  }
   to {
-    -webkit-transform: rotateX(359deg) rotateY(-359deg);
-    transform: rotateX(359deg) rotateY(-359deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
-.moon:before, .moon:after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  -webkit-transform-origin: center center -133.33333px;
-  transform-origin: center center -133.33333px;
-  -webkit-animation: orbit 6s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
-  animation: orbit 6s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  z-index: 1;
-  content: '';
-  width: 40px;
-  height: 40px;
-  background-color: #00e3ad;
-  border-radius: 50%;
-}
-
-.moon:before {
-  -webkit-transform-origin: center center -100px;
-  transform-origin: center center -100px;
-  width: 30px;
-  height: 30px;
-  background-color: #00e3ad;
-  opacity: 0.5;
-}
-
-.moon.behind:after {
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
-}
-
 
 </style>
 
-<div class="moon behind"></div>
-<div class="moon"></div>
+<a class="container">
+  <div class="planet"></div>
+  <div class="orbit">
+    <div class="moon"></div>
+  </div>
+</a>
